@@ -1,11 +1,13 @@
 const { MongoClient, ObjectID } = require("mongodb");
 
+console.log(process.env.USERNAME1);
+const con = `mongodb+srv://${process.env.USERNAME_DB}:${process.env.PASSWORD}@mandatory-2.iqs81.mongodb.net/mandatory-2`;
 const connectionURL = "mongodb://127.0.0.1:27017";
 const databaseName = "auth";
 
 const registerUser = (user) => {
   MongoClient.connect(
-    connectionURL,
+    con,
     { useUnifiedTopology: true },
     { useNewUrlParser: true },
     (error, client) => {
