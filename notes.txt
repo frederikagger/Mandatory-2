@@ -1,0 +1,4 @@
+heroku hosting
+https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
+
+mongodb cloud
