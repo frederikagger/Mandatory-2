@@ -1,4 +1,15 @@
 heroku hosting
 https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
 
-mongodb cloud
+mongodb cloud - DONE
+
+nodemailer 
+
+middleware
+
+Implement Reset Password
+
+
+
+session 
+
