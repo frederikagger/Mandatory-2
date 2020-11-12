@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Login</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="login">
+        <div class="login-form">
+          <h1>Sign Up</h1>
+          <input id="username" placeholder="Username" type="text" />
+          <input id="password" placeholder="Password" type="password" />
+          <input id="email" placeholder="Email" type="email" />
+          <button id="btn btn-signup" onclick="signUp()">Sign Up</button>
+          <a href="/login" class="signup">Already have an account?</a>
+        </div>
+      </div>
+    </div>
+    <script src="../js/script.js" async defer></script>
+  </body>
+</html>
+
+<script>
+  // TODO: implement async await instead of chaining
+  const signUp = () => {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const email = document.getElementById("email").value;
+    axios
+      .post("/register", {
+        username: username,
+        password: password,
+        email: email,
+      })
+      .then((response) => {
+        window.location.href = "/login";
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+</script>
