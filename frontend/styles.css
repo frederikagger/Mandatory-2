@@ -6,7 +6,7 @@
 
 html {
   font-family: Lato, sans-serif;
-  background-image: linear-gradient(90deg, #33ac1b, #912323, #33ab1b, #912323);
+  background-image: linear-gradient(90deg, #000000, #912323, #33ab1b, #000000, #912323);
   font-size: 170% !important;
 }
 
