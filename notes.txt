@@ -11,3 +11,8 @@ Implement Reset Password
 
 session 
 
+error handling 
+
+hash Password
+
+
