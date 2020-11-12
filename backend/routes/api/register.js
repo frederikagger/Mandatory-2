@@ -2,22 +2,15 @@ const router = require("express").Router();
 require("../../db/mongoose.js");
 const User = require("../../models/user");
 
-router.post("/register", async (req, res) => {
+router.post("/register", async (req, res, next) => {
   const user = new User(req.body);
   try {
-    await user.save();
+    const ref = await user.save();
+    console.log(ref);
     res.sendStatus(200);
-  } catch(error) {
-    console.log(user);
-    res.sendStatus(400)
+  } catch (error) {
+    next(error);
   }
-
-  /* try {
-    return res.sendStatus(200);
-  } catch(error) {
-    console.log(error);
-    return res.sendStatus(500);
-  } */
 });
 
 module.exports = router;

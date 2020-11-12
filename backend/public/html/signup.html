@@ -6,7 +6,7 @@
     <title>Login</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../css/styles.css" />
   </head>
   <body>
@@ -18,15 +18,16 @@
           <input id="password" placeholder="Password" type="password" />
           <input id="email" placeholder="Email" type="email" />
           <button id="btn btn-signup" onclick="signUp()">Sign Up</button>
-          <a href="login.html" class="signup">Already have an account?</a>
+          <a href="/login" class="signup">Already have an account?</a>
         </div>
       </div>
     </div>
-    <script src="script.js" async defer></script>
+    <script src="../js/script.js" async defer></script>
   </body>
 </html>
 
 <script>
+  // TODO: implement async await instead of chaining
   const signUp = () => {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -37,11 +38,11 @@
         password: password,
         email: email,
       })
-      .then(function (response) {
-          window.location.href = "/login"
+      .then((response) => {
+        window.location.href = "/login";
         console.log(response);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
       });
   };

@@ -6,6 +6,7 @@ const User = mongoose.model("User", {
     type: String,
     required: true,
     trim: true,
+    unique: true
   },
   password: {
     type: String,
@@ -19,6 +20,7 @@ const User = mongoose.model("User", {
   email: {
     type: String,
     required: true,
+    unique: true,
     validate(value) {
       if (!validator.isEmail(value)) {
         throw new Error("Email is invalid");
@@ -26,7 +28,5 @@ const User = mongoose.model("User", {
     },
   },
 });
-
-
 
 module.exports =  User ;
