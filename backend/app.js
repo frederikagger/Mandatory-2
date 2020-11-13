@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const routes = require("./routes/api");
-const pages = require("./routes/pages/index")
+const pages = require("./routes/pages/index");
 const jwt = require("jsonwebtoken");
 const port = process.env.PORT || 3000;
 

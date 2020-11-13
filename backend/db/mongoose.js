@@ -7,4 +7,3 @@ mongoose.connect(DB_URL, {
   useCreateIndex: true,
   useUnifiedTopology: true
 });
-

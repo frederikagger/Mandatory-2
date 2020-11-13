@@ -10,7 +10,6 @@ router.post("/register", async (req, res, next) => {
     if (password && username && email) {
       password = await bcrypt.hash(password, 8);
     } else throw createError(400, "Missing parameters");
-
     const user = new User({ password, username, email });
     await user.save();
     console.log(`User ${user.username} was created`);
