@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
+const jwt = require("jsonwebtoken");
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -22,13 +23,29 @@ const userSchema = new mongoose.Schema({
       }
     },
   },
+  tokens: [
+    {
+      token: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
 });
 
-userSchema.pre('save', async function(next) {
+userSchema.methods.createJWT = async function () {
   const user = this;
-  console.log(user);
-  next()
-})
+  const token = jwt.sign({ _id: user._id.toString() }, process.env.secret);
+  user.tokens = user.tokens.concat({token});
+  await user.save();
+  return token;
+};
+
+/* userSchema.pre("save", async function (next) {
+  const user = this;
+  console.log("presave method");
+  next();
+}); */
 
 const User = mongoose.model("User", userSchema);
 
