@@ -36,6 +36,7 @@
         password: password,
       })
       .then((response) => {
+        localStorage.setItem("token", response.data)
         window.location.href = "/";
       })
       .catch((error) => {
