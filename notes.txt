@@ -9,10 +9,10 @@ middleware
 
 Implement Reset Password
 
-session 
+JWTTOKEN
 
-error handling 
+error handling - DONE
 
-hash Password
+hash Password - DONE
 
 

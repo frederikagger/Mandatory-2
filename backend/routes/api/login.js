@@ -3,6 +3,7 @@ require("../../db/mongoose.js");
 const User = require("../../models/user");
 const bcrypt = require("bcrypt");
 const createError = require("http-errors");
+const jwt = require("jsonwebtoken");
 
 router.post("/login", async (req, res, next) => {
   const { username, password } = req.body;

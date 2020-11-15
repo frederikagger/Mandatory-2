@@ -10,12 +10,7 @@ const User = mongoose.model("User", {
   },
   password: {
     type: String,
-    required: true,
-    validate(value) {
-      if (value.length < 6) {
-        throw new Error("Password is too short");
-      }
-    },
+    required: true
   },
   email: {
     type: String,

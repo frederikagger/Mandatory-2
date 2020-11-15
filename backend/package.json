@@ -1,7 +1,7 @@
 {
   "name": "mandatory_2",
   "version": "1.0.0",
-  "description": "",
+  "description": "mandatory_2 for node",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon -r dotenv/config app.js",

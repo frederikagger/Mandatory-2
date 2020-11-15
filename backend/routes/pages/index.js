@@ -1,16 +1,8 @@
 const router = require("express").Router();
 const path = require("path");
+const auth  = require("../../middleware/auth");
 
-const isLoggedIn = (req, res, next) => {
-  const loggedIn = true;
-  if (loggedIn) {
-    next();
-  } else {
-    return res.sendFile(path.resolve("public/html/login.html"));
-  }
-};
-
-router.get("/", isLoggedIn, (req, res) => {
+router.get("/", auth ,(req, res) => {
   return res.sendFile(path.resolve("public/html/index.html"));
 });
 
