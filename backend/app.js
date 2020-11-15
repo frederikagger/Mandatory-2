@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
+require("./db/mongoose.js");
 const routes = require("./routes/api");
 const pages = require("./routes/pages/index")
 const logger = require("./middleware/logger")
-const port = process.env.PORT || 3000;
 
 app
   .use(logger)
@@ -13,6 +13,4 @@ app
   .use(routes)
   .use(pages);
 
-app.listen(port, () =>
-  console.log(`app listening on port ${port}!`)
-);
+module.exports = app
