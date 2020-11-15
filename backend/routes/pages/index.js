@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const path = require("path");
-const auth  = require("../../middleware/auth");
+const auth = require("../../middleware/auth");
 
-router.get("/", auth ,(req, res) => {
+router.get("/", auth, (req, res) => {
   return res.sendFile(path.resolve("public/html/index.html"));
 });
 
