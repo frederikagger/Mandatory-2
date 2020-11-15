@@ -2,10 +2,11 @@ const express = require("express");
 const app = express();
 const routes = require("./routes/api");
 const pages = require("./routes/pages/index")
-const jwt = require("jsonwebtoken");
+const logger = require("./middleware/logger")
 const port = process.env.PORT || 3000;
 
 app
+  .use(logger)
   .use(express.static("public"))
   .use(express.json())
   .use(express.urlencoded({ extended: true }))
