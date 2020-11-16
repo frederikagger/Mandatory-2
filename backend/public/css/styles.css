@@ -72,3 +72,12 @@ h1{
 .btn:active {
   background-color: #7D349a70;
 }
+
+.alert{
+  margin-top: 0.5rem;
+  color: white;
+  background-color: #912323;
+  padding: .7rem;
+  font-size: .6rem;
+  font-weight: 500;
+}
