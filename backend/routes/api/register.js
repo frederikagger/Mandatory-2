@@ -13,7 +13,7 @@ router.post("/register", async (req, res, next) => {
     const user = new User({ password, username, email });
     await user.save();
     console.log(`User ${user.username} was created`);
-    return res.sendStatus(201);
+    return res.status(201).send();
   } catch (error) {
     next(error);
   }
