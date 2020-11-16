@@ -13,7 +13,7 @@ router.post("/login", async (req, res, next) => {
     }
     if (await bcrypt.compare(password, user.password)) {
       const token = await user.createJWT();
-      return res.status(200).send(token);
+      res.status(200).send(token);
     } else throw createError(400, "The password is incorrect");
   } catch (error) {
     next(error); // * parsing the error to the error handler
