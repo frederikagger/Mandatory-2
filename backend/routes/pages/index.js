@@ -22,4 +22,8 @@ router.get("/forgotpassword", async (req, res) => {
   return res.sendFile(path.resolve("public/html/forgotPassword.html"));
 });
 
+router.get("/contact", async (req, res) => {
+  return res.sendFile(path.resolve("public/html/contact.html"));
+});
+
 module.exports = router;
