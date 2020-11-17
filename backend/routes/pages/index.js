@@ -1,20 +1,24 @@
 const router = require("express").Router();
 const path = require("path");
-const auth  = require("../../middleware/auth");
+const auth = require("../../middleware/auth");
 
-router.get("/", auth ,(req, res) => {
+router.get("/", async (req, res) => {
+  return res.redirect("/index");
+});
+
+router.get("/index", auth, async (req, res) => {
   return res.sendFile(path.resolve("public/html/index.html"));
 });
 
-router.get("/login", (req, res) => {
+router.get("/login", async (req, res) => {
   return res.sendFile(path.resolve("public/html/login.html"));
 });
 
-router.get("/signup", (req, res) => {
+router.get("/signup", async (req, res) => {
   return res.sendFile(path.resolve("public/html/signup.html"));
 });
 
-router.get("/forgotpassword", (req, res) => {
+router.get("/forgotpassword", async (req, res) => {
   return res.sendFile(path.resolve("public/html/forgotPassword.html"));
 });
 

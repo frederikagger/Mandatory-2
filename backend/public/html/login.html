@@ -14,8 +14,18 @@
       <div class="login">
         <div class="login-form">
           <h1>Welcome</h1>
-          <input id="username" class="username" placeholder="Username" type="text" />
-          <input id="password" class="password" placeholder="Password" type="password" />
+          <input
+            id="username"
+            class="username"
+            placeholder="Username"
+            type="text"
+          />
+          <input
+            id="password"
+            class="password"
+            placeholder="Password"
+            type="password"
+          />
           <button class="btn btn-login" onclick="login()">Login</button>
           <a href="/signup" class="signup">Sign Up here</a>
           <a href="/forgotPassword" class="forgot-password">Forgot Password?</a>
@@ -28,18 +38,23 @@
 
 <script>
   const login = () => {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
     axios
       .post("/login", {
         username: username,
         password: password,
       })
       .then((response) => {
-        window.location.href = "/";
+        document.cookie = "token=" + response.data;
+        window.location.replace("/index");
       })
       .catch((error) => {
-        console.log(error.response.statusText);
+        const alert = createAlert(error.response.statusText);
+        const loginForm = document.querySelector(".forgot-password");
+        loginForm.after(alert);
+        removeAlert();
       });
   };
 </script>
