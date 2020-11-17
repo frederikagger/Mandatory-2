@@ -3,7 +3,6 @@ const User = require("../../models/user");
 const bcrypt = require("bcrypt");
 const createError = require("http-errors");
 
-
 const salt = 8;
 
 router.post("/register", async (req, res, next) => {
