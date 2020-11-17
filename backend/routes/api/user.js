@@ -21,6 +21,6 @@ router.put("/user/:username", auth, async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-});
+});g
 
 module.exports = router;
