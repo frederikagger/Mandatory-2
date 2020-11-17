@@ -35,8 +35,11 @@ const userSchema = new mongoose.Schema({
 
 userSchema.methods.createJWT = async function () {
   const user = this;
-  const token = jwt.sign({ _id: user._id.toString() }, process.env.secret);
-  user.tokens = user.tokens.concat({token});
+  const token = jwt.sign(
+    { _id: user._id.toString(), exp: Math.floor(Date.now() / 1000) + 60 * 60 },
+    process.env.secret
+  );
+  user.tokens = user.tokens.concat({ token });
   await user.save();
   return token;
 };
