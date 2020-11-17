@@ -2,7 +2,7 @@ const router = require("express").Router();
 const path = require("path");
 const auth = require("../../middleware/auth");
 
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
   return res.redirect("/index");
 });
 
