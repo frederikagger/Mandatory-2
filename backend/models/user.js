@@ -31,6 +31,11 @@ const userSchema = new mongoose.Schema({
       },
     },
   ],
+  uuid: {
+    type: String,
+    required: false,
+    unique: true,
+  }
 });
 
 userSchema.methods.createJWT = async function () {
