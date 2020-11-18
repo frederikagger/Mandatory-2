@@ -3,6 +3,14 @@ const User = require("../../models/user");
 const bcrypt = require("bcrypt");
 const createError = require("http-errors");
 const auth = require("../../middleware/auth");
+const rateLimit = require("express-rate-limit");
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 15, // limit each IP to 100 requests per windowMs
+});
+
+router.use("/login", limiter);
 
 router.post("/login", async (req, res, next) => {
   const { username, password } = req.body;

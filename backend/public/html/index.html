@@ -10,16 +10,26 @@
     <link rel="stylesheet" href="../css/styles.css" />
   </head>
   <body>
-    <h1 style="text-align: center">Index</h1>
-    <button class="btn" onclick="logout()">Log ud</button>
+    <div class="container">
+      <div class="login-form">
+        <h1 style="text-align: center">Hej ${username}</h1>
+        <button class="btn" onclick="logout()">Log ud</button>
+
+        <a href="/contact">Contact</a>
+      </div>
+    </div>
 
     <script src="../js/script.js" async defer></script>
   </body>
 </html>
 
 <script>
+  window.addEventListener("beforeunload", ()=>{
+    const username = document.cookie.username;
+    console.log(username);
+  });
+
   const logout = () => {
-    console.log("hej");
     axios
       .delete("/logout")
       .then((response) => {

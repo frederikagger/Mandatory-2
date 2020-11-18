@@ -48,6 +48,7 @@
       })
       .then((response) => {
         document.cookie = "token=" + response.data;
+        document.cookie = "name=" + username;
         window.location.replace("/index");
       })
       .catch((error) => {

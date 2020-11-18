@@ -89,6 +89,11 @@ ul{
     transition: background-color 2s ease-out;
 }
 
+#msg{
+    font-weight: bold;
+    color: green;
+}
+
 /* LARGE SCREENS */
 @media(min-width:700px){
     .wrapper{

@@ -25,7 +25,7 @@
         <div class="contact">
             <h3>Email Us</h3>
             <p id=msg></p>
-            <form>
+            <form id="form">
                 <p>
                     <label>Name</label>
                     <input type="text" id="name" name="name">
@@ -58,7 +58,9 @@ const sendEmail = () => {
     .post("/send")
     .then(response=>{
         const msg = document.querySelector("#msg");
-        msg.innerHTML = response.statusText;
+        msg.innerHTML = response.data.msg;
+    
+        const form = document.querySelector("#form").reset();
     }).catch(error => console.log(error));
 }
 </script>
