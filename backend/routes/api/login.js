@@ -31,7 +31,7 @@ router.post("/login", async (req, res, next) => {
 
 router.delete("/logout", auth, async (req, res, next) => {
   let user = req.user;
-  user.tokens = [];
+  user.tokens = []; // reset all jwt tokens
   user = new User(user);
   try {
     await user.save();

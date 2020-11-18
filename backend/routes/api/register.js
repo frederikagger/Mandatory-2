@@ -8,6 +8,7 @@ const salt = 8;
 router.post("/register", async (req, res, next) => {
   try {
     let { password, username, email } = req.body;
+    email = email.toLowerCase();
     if (password && username && email) {
       password = await bcrypt.hash(password, salt);
     } else throw createError(400, "Missing parameters");

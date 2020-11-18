@@ -2,22 +2,21 @@ const router = require("express").Router();
 const User = require("../../models/user");
 const bcrypt = require("bcrypt");
 const createError = require("http-errors");
-const auth = require("../../middleware/auth");
 
-router.put("/user/:username", auth, async (req, res, next) => {
-  const { username, password, email } = req.body;
-  const query = User.where({ username: username });
+const salt = 8;
+
+router.put("/user/:uuid", async (req, res, next) => {
   try {
-    const user = await query.findOne();
-    const { _id } = user;
+    const { uuid, password } = req.body;
+    const user = await User.findOne({ uuid });
     if (!user) {
-      throw createError(400, "No user with the current username exist");
-    } else {
-      const user = new User({ username, password, email, _id });
-      await User.updateOne(user);
-      console.log(`User with username ${user.username} was updated`);
-      return res.sendStatus(200);
+      throw createError(400, "No user with the current uuid exist");
     }
+    user.password = await bcrypt.hash(password, salt);
+    user.uuid = undefined;
+    await user.save();
+    console.log(`User with username ${user.username} was updated`);
+    return res.sendStatus(200);
   } catch (error) {
     next(error);
   }
