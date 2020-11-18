@@ -1,52 +1,28 @@
-const nodemailer = require("nodemailer");
 const router = require("express").Router();
 const auth = require("../../middleware/auth");
+const { mailOptions, transporter } = require("../../nodemailer/mailsetup");
 
 router.post("/send", auth, (req, res) => {
+  console.log(req.body);
   const output = `
-    <p>You have a new contact request</p>
-    <h3>Contact Details</h3>
-    <ul>
-        <li>Name: ${req.body.name}</li>
-        <li>Name: ${req.body.company}</li>
-        <li>Name: ${req.body.email}</li>
-        <li>Name: ${req.body.phone}</li>
-    </ul>
-    <h3>Message</h3>
-    <p>${req.body.message}</p>
-    `;
-
-  // create reusable transporter object using the default SMTP transport
-  let transporter = nodemailer.createTransport({
-    host: "send.one.com",
-    port: 587,
-    secure: false, // true for 465, false for other ports
-    auth: {
-      user: "test@taxastork.dk", // generated ethereal user
-      pass: "dumtpassword", // generated ethereal password
-    },
-    tls: {
-      rejectUnauthorized: false,
-    },
-  });
-
-  // setup email data with unicode symbols
-  let mailOptions = {
-    from: '"John Travolta" <test@taxastork.dk>', // sender address
-    to: "nodemailer@taxastork.dk", // list of receivers
-    subject: "Mail from mandatory test", // subject line
-    html: output, // html body
-  };
+<p>You have a new contact request</p>
+<h3>Contact Details</h3>
+<ul>
+    <li>Name: ${req.body.name}</li>
+    <li>Email: ${req.body.email}</li>
+    <li>Phone: ${req.body.number}</li>
+</ul>
+<h3>Message</h3>
+<p>${req.body.message}</p>
+`;
 
   // send mail with defined transport object
-  transporter.sendMail(mailOptions, (error, info) => {
+  transporter.sendMail(mailOptions("nodemailer@taxastork.dk", output), (error, info) => {
     if (error) {
-      return console.log(error);
+      throw new Error("Error in transport object")
     }
     console.log("message sent: %s", info.messageId);
-    console.log("preview URL: %s", nodemailer.getTestMessageUrl(info));
-
-    res.status(200).send({ msg: "Email has been sent" });
+    return res.status(200).send({ msg: "Email has been sent" });
   });
 });
 
