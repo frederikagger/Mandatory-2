@@ -23,7 +23,7 @@ const mailOptions = (receiver, html) => {
     html: html
   };
 };
-
+  
 module.exports = {
   transporter,
   mailOptions,
