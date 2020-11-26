@@ -39,6 +39,9 @@ router.get("/resetpassword/:id", async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+  router.get("*", async (req, res) => {
+    res.redirect("/");
+  });
 });
 
 module.exports = router;
