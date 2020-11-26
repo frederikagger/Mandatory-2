@@ -26,6 +26,7 @@ router.post("/login", async (req, res, next) => {
       return res.status(200).send(token);
     } else throw createError(400, "The password is incorrect");
   } catch (error) {
+    console.log(error);
     next(error); // * parsing the error to the error handler
   }
 });
