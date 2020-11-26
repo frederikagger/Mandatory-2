@@ -20,9 +20,10 @@ router.post("/login", async (req, res, next) => {
     if (!user) {
       throw createError(400, "No user with the current username exist");
     }
+    console.log(bcrypt.compareSync(password, user.password));
     if (await bcrypt.compare(password, user.password)) {
       const token = await user.createJWT();
-      res.status(200).send(token);
+      return res.status(200).send(token);
     } else throw createError(400, "The password is incorrect");
   } catch (error) {
     next(error); // * parsing the error to the error handler
