@@ -17,9 +17,17 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css"
     />
     <link rel="stylesheet" href="../css/contactStyles.css" />
+
   </head>
   <body>
-    <div class="container">
+
+  <div class="container">
+    <h1 style="text-align: center">Hej, velkommen til!</h1>
+    <div style="margin-bottom: 5rem">
+      <button style="float: left" class="full1" onclick="window.location.href='/index';">Index</button>
+      <button style="float: right" class="full1" onclick="logout()">Log ud</button>
+    </div>
+
       <h1 class="brand"><span>Acme</span> Web Design</h1>
       <div class="wrapper animated bounceInLeft">
         <div class="company-info">
@@ -79,5 +87,19 @@
         const form = document.querySelector("#form").reset();
       })
       .catch((error) => console.log(error));
+  };
+
+  const logout = () => {
+    axios
+            .delete("/logout")
+            .then((response) => {
+              window.location.replace("/");
+            })
+            .catch((error) => {
+              const alert = createAlert(error.response.statusText);
+              const loginForm = document.querySelector(".btn");
+              loginForm.after(alert);
+              removeAlert();
+            });
   };
 </script>
