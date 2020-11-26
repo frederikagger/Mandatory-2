@@ -7,7 +7,6 @@ router.post("/send", auth, async (req, res, next) => {
   // send mail with defined transport object
   try {
     await transporter.sendMail(mailOptions("nodemailer@taxastork.dk", output));
-    console.log("message sent: %s", info.messageId);
     return res.status(200).send({ msg: "Email has been sent" });
   } catch (error) {
     next(error);
