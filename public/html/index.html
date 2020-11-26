@@ -12,7 +12,7 @@
   <body>
     <div class="container">
       <div class="login-form">
-        <h1 style="text-align: center">Hej </h1>
+        <h1 style="text-align: center">Hej, velkommen til!</h1>
         <button class="btn" onclick="logout()">Log ud</button>
 
         <a style="text-align: center; padding-top: 10px;" class="btn" href="/contact">Contact</a>
@@ -24,11 +24,6 @@
 </html>
 
 <script>
-  window.addEventListener("beforeunload", ()=>{
-    const username = document.cookie.username;
-    console.log(username);
-  });
-
   const logout = () => {
     axios
       .delete("/logout")
