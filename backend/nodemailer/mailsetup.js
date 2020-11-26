@@ -7,7 +7,7 @@ let transporter = nodemailer.createTransport({
   secure: false, // true for 465, false for other ports
   auth: {
     user: "test@taxastork.dk", // generated ethereal user
-    pass: "dumtpassword", // generated ethereal password
+    pass: process.env.PASS, // generated ethereal password
   },
   tls: {
     rejectUnauthorized: false,
@@ -23,7 +23,7 @@ const mailOptions = (receiver, html) => {
     html: html
   };
 };
-  
+
 module.exports = {
   transporter,
   mailOptions,
