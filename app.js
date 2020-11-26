@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 require("./db/mongoose.js");
@@ -5,7 +6,7 @@ const routes = require("./routes/api");
 const pages = require("./routes/pages/index")
 const morgan = require("morgan")
 const cookieparser = require("cookie-parser");
-require("dotenv").config();
+
 
 app
   .use(morgan("dev"))
