@@ -40,7 +40,7 @@ router.get("/resetpassword/:id", async (req, res, next) => {
     next(error);
   }
   router.get("*", async (req, res) => {
-    res.redirect("/");
+    return res.redirect(path.resolve("public/html/404.html"));
   });
 });
 

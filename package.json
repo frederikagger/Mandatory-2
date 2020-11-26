@@ -4,7 +4,7 @@
   "description": "mandatory_2 for node",
   "main": "index.js",
   "scripts": {
-    "start": "export NODE_ENV=production && node app.js",
+    "start": "export NODE_ENV=production && node index.js",
     "dev": "nodemon -r dotenv/config index.js",
     "test": "jest --watch --detectOpenHandles"
   },
