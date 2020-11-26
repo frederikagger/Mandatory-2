@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const debug = require("debug")("app");
 require("./db/mongoose.js");
 const routes = require("./routes/api");
 const pages = require("./routes/pages/index")
